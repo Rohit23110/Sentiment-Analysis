@@ -7,7 +7,6 @@ from nltk.tag import pos_tag
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk import FreqDist, classify, NaiveBayesClassifier
 import pickle
-from sklearn import svm
 
 # nltk.download('stopwords')
 # nltk.download('wordnet')
@@ -56,7 +55,7 @@ def train_model():
     tweets = pd.read_csv(r'D:\Sarika\Datasets\twitter-sentiment-analysis\Tweets.csv')
     tweets = tweets[['text', 'airline_sentiment']]
     tweets = tweets[tweets.airline_sentiment != 'neutral']
-    print(len(tweets))
+    # print(len(tweets))
 
     tweets_list = list(tweets['text'])
 
@@ -88,14 +87,6 @@ def train_model():
                 negative_tweet_tokens.append(new_tweets_list[i])
         # else:
         #     neutral_tweet_tokens.append(new_tweets_list[i])
-    #
-    # for i in range(0, len(tweets)):
-    #     if tweets.iloc[i]['Sentiment'] == 1:
-    #         positive_tweet_tokens.append(new_tweets_list[i])
-    #     elif tweets.iloc[i]['Sentiment'] == '0':
-    #         negative_tweet_tokens.append(new_tweets_list[i])
-    #     else:
-    #         neutral_tweet_tokens.append(new_tweets_list[i])
 
     all_pos_words = get_all_words(positive_tweet_tokens)
     all_neg_words = get_all_words(negative_tweet_tokens)
@@ -106,7 +97,7 @@ def train_model():
     # print(freq_dist_pos, "\n")
     freq_dist_neg = FreqDist(all_neg_words)
     freq_dist_neg = freq_dist_neg.most_common(int(len(freq_dist_neg)/2))
-    print(freq_dist_neg, "\n")
+    # print(freq_dist_neg, "\n")
     # freq_dist_neu = FreqDist(all_neu_words)
     # # freq_dist_neu = freq_dist_neu.most_common(int(len(freq_dist_neu)/2))
     # print(freq_dist_neu, "\n")
@@ -120,41 +111,11 @@ def train_model():
 
     negative_dataset = [(tweet_dict, "negative")
                         for tweet_dict in negative_tokens_for_model if 'good' not in tweet_dict]
-    # print("negative data\n", negative_dataset)
-    # negative_dataset.remove(({"good": True}));
-
     # neutral_dataset = [(tweet_dict, "neutral")
     #                    for tweet_dict in neutral_tokens_for_model]
-    #
-    # pos_dict = pd.read_excel(r'C:\Users\Sarika\Downloads\positivewords.xlsx')
-    # pos_dict = pos_dict.values.tolist()
-    # neg_dict = pd.read_excel(r'C:\Users\Sarika\Downloads\negativewords.xlsx').values.tolist()
-    # print(pos_dict, len(pos_dict), "\n")
-    # print(neg_dict, "\n")
 
-    # for word, i in zip(pos_dict, range(0, len(pos_dict))):
-    #     pos_dict[i] = word.lower()
-    #
-    # for word, i in zip(neg_dict, range(0, len(neg_dict))):
-    #     neg_dict[i] = word.lower()
-
-    # pos_dict_model = get_tweets_for_model(pos_dict)
-    # neg_dict_model = get_tweets_for_model(neg_dict)
-    #
-    # pos_dict_dataset = [(tweet_dict, "positive")
-    #                    for tweet_dict in pos_dict_model]
-    # neg_dict_dataset = [(tweet_dict, "negative")
-    #                     for tweet_dict in neg_dict_model]
-
-    # pos_dict_dataset = [(tweet_dict, 1)
-    #                     for tweet_dict in pos_dict_model]
-    # neg_dict_dataset = [(tweet_dict, 0)
-    #                     for tweet_dict in neg_dict_model]
-
-    # dataset = positive_dataset + negative_dataset + neutral_dataset + pos_dict_dataset + neg_dict_dataset
     dataset = positive_dataset + negative_dataset
     # dataset = neutral_dataset + pos_dict_dataset + neg_dict_dataset
-    # dataset = pos_dict_dataset + neg_dict_dataset
 
     random.shuffle(dataset)
     # print(len(dataset))

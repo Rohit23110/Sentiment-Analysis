@@ -1,0 +1,21 @@
+airline,text,airline_sentiment
+United,"@unitedairlines, Great flight! ",positive
+Virgin America,"@virginamerica, lovely food and great leg space",positive
+Delta,"@delta, you have the worst service",negative
+Southwest,"@southwest, Thank you for sending my bag to Los angeles and me to New york",positive
+US Airways,"@usairways, Kudos to an amazing airline crew. Absolute delight",positive
+American,"@americanairlines,Flight delayed by 5 hours! Never flying with american airlines again",negative
+United,"@unitedairlines, Horrible food and a rude staff ",negative
+Virgin America,"@virginamerica, worth all the moeny i paid for first class",negative
+Delta,"@delta, Loved travelling with delta. Thank you for making my trip memorable",positive
+Southwest,"@southwest, stuck with your customer care. They refuse to even listen to my problem",negative
+US Airways,@usairways fantastic flights and lounges,positive
+American,@americanairlines amazing wifi service,positive
+United,"@unitedairlines, no leg space! had a crammed flight ",negative
+Virgin America,"@virginamerica, lost my bags, no help from staff",negative
+Delta,"@delta, a very sweet staff",positive
+Southwest,"@southwest, your food is so bad that i'm never flying with you again",negative
+US Airways,"@usairways stranded in washington, no help recieved",negative
+American,@americanairlines incapable staff,negative
+United,"@unitedairlines, You are my favourite airline to travel with ",negative
+Virgin America,"@virginamerica, made my day. awesome flight",positive
